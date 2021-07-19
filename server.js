@@ -40,6 +40,7 @@ app.get("/tweets/:tweetId", async (req, res) => {
 
 // create a tweet
 app.post("/tweets", async (req, res) => {
+  console.log('debug', req.body, process.env.CA_CERT);
   const { db } = await connectToDatabase();
   const tweet = await db.collection("tweets").insertOne(req.body.text);
   res.json({ tweet });
